@@ -1,0 +1,24 @@
+#%Module1.0******************************************************************
+#* EDAPack modulefile for {{name}}
+#****************************************************************************
+
+set version "{{version}}"
+
+proc ModulesHelp { } {
+  puts stderr "\tThis module will configure {{name}} in the environment"
+}
+
+# Modulefiles are located in ${EDAPACK}/modulefiles/<tool>/<version>
+# Compute
+
+set modulefile_dir [file dirname $ModulesCurrentModulefile]
+set modulefiles_dir [file dirname $modulefile_dir]
+set edapack_dir [file dirname $modulefiles_dir]
+
+prepend-path PATH [file join $edapack_dir {{name}} $version bin]
+
+
+# if [ module-info mode load ] {
+#   ModulesHelp
+# }
+
